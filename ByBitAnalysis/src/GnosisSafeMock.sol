@@ -9,6 +9,8 @@ contract GnosisSafeMock {
     }
 
     function execTransaction(address to, bytes memory data) public {
+
+        //?How delegate call works can be found here: https://docs.soliditylang.org/en/latest/introduction-to-smart-contracts.html#delegatecall
         // Simulate a delegatecall (vulnerability point)
         (bool success, ) = to.delegatecall(data);
         require(success, "Delegatecall failed");
